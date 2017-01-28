@@ -19,7 +19,7 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 
 //数据
-var appData = require("../src/components/common/json/data.json")
+var appData = require("../data.json");
 var seller = appData.seller;
 var goods = appData.goods;
 var ratings = appData.ratings;
