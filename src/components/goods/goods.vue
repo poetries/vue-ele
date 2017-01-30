@@ -4,7 +4,7 @@
       <ul>
         <li v-for="item in goods" class="menu-item">
           <span class="text border-1px">
-            <span class="icon" v-show="item.type>0" :class="classMap[item.type]"></span>
+            <span class="icon" v-show="item.type > 0" :class="classMap[item.type]"></span>
             {{item.name}}
           </span>
         </li>
@@ -36,10 +36,13 @@
         </li>
       </ul>
     </div>
+    <shopcart></shopcart>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import shopcart from 'components/shopcart/shopcart';
+
   const ERR_OK = 0;
 
   export default {
@@ -62,6 +65,9 @@
           this.goods = response.data;
         }
       });
+    },
+    components: {
+      shopcart
     }
   };
 </script>
