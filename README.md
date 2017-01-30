@@ -1,2 +1,15 @@
-# vue-ele
 vue-ele
+---
+
+usage
+---
+
+```
+npm install
+```
+```
+npm run dev
+```
+```
+npm run build
+```
