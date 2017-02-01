@@ -11,7 +11,7 @@
         <div :class="{'highlight':totalCount>0}" class="price">￥{{totalPrice}}</div>
         <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
       </div>
-      <div class="content-right">
+      <div class="content-right" @click.stop.prevent="pay">
         <div :class="payClass" class="pay">
           {{payDesc}}
         </div>
@@ -42,6 +42,7 @@
       </div>
     </div>
   </div>
+  <div class="list-mask" v-show="listShow" transition="fade" @click="hideList"></div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -165,6 +166,15 @@
           this.selectFoods.forEach((food) => {
             food.count = 0;
           });
+        },
+        hideList() {
+          this.fold = true;
+        },
+        pay() {
+          if (this.totalPrice < this.minPrice) {
+            return;
+          }
+          window.alert(`支付${this.totalPrice}元`);
         }
       },
       transitions: {
@@ -370,4 +380,20 @@
             position: absolute
             right: 0
             bottom: 6px
+  .list-mask
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 40
+    backdrop-filter: blur(10px)
+    &.fade-transition
+      transition: all 0.5s
+      opacity: 1
+      background: rgba(7, 17, 27, 0.6)
+    &.fade-enter, &.fade-leave
+      opacity: 0
+      background: rgba(7, 17, 27, 0)
+
 </style>

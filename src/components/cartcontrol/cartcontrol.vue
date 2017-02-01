@@ -19,7 +19,6 @@
       },
       methods: {
         addCart(event) {
-          console.log(11);
           if (!this.food.count) {
             Vue.set(this.food, 'count', 1);
           } else {
@@ -28,7 +27,6 @@
           this.$dispatch('cart.add', event.target);
         },
         decreaseCart(event) {
-          console.log(22);
           if (this.food.count) {
             this.food.count--;
           }
